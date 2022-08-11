@@ -6,6 +6,7 @@ const todoSchema = mongoose.Schema({
   assignee: String,
   name: String,
   creator: String,
+  completed: { type: Boolean, default: false },
   deadline: { type: Date, default: new Date() },
   priority: String,
   createdAt: {
