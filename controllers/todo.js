@@ -17,7 +17,6 @@ export const createTodo = async (req, res) => {
 
   const newTodoMessage = new TodoMessage({
     ...todo,
-    creator: req.userId,
     createdAt: new Date().toISOString(),
   });
 
