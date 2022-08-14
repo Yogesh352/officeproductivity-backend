@@ -57,3 +57,29 @@ export const signup = async (req, res) => {
     console.log(error);
   }
 };
+
+export const getUser = async (req, res) => {
+  const userId = req.query.userId;
+  const name = req.query.name;
+
+  try {
+    const user = userId
+      ? await UserModal.findById(userId)
+      : await UserModal.findOne({ username: username });
+
+    const { password, ...other } = user._doc;
+    res.status(200).json(other);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
+export const getAllUsers = async (req, res) => {
+  try {
+    const users = await UserModal.find();
+
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
