@@ -44,6 +44,7 @@ export const signup = async (req, res) => {
       email,
       password: hashedPassword,
       name: `${firstName} ${lastName}`,
+      createdAt: new Date().toISOString(),
     });
 
     const token = jwt.sign({ email: result.email, id: result._id }, secret, {

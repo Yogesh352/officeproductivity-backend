@@ -22,6 +22,10 @@ const userSchema = mongoose.Schema(
       type: String,
       default: "online",
     },
+    createdAt: {
+      type: Date,
+      default: new Date(),
+    },
   },
   { minimize: false }
 );
